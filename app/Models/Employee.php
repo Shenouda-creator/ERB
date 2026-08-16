@@ -10,7 +10,7 @@ class Employee extends Model
 {
      use HasFactory, SoftDeletes;
 
-     protected $fillable = ['name', 'company_id'];
+     protected $fillable = ['name', 'company_id','shift_id'];
 
      protected static function booted()
      {
@@ -27,5 +27,9 @@ class Employee extends Model
      public function leaveRequests()
      {
           return $this->hasMany(LeaveRequest::class);
+     }
+     public function shift()
+     {
+          return $this->belongsTo(Shift::class);
      }
 }

@@ -36,7 +36,10 @@ class EmployeeResource extends Resource
                     ->required()
                     ->searchable()
                     ->preload(),
-
+                Select::make('shift_id')
+                    ->relationship('shift', 'name')
+                    ->searchable()
+                    ->preload(),
             ]);
     }
 
