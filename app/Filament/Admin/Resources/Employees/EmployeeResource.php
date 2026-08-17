@@ -10,6 +10,7 @@ use Filament\Forms;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Support\Icons\Heroicon;
 use Filament\Actions;
 use Filament\Tables;
@@ -40,6 +41,10 @@ class EmployeeResource extends Resource
                     ->relationship('shift', 'name')
                     ->searchable()
                     ->preload(),
+                SpatieMediaLibraryFileUpload::make('documents')
+                    ->collection('documents')
+                    ->multiple()
+                    ->maxFiles(5),
             ]);
     }
 
@@ -52,6 +57,9 @@ class EmployeeResource extends Resource
                 Tables\Columns\TextColumn::make('company.name')
                     ->label('Company')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('media_count')
+                    ->label('Documents')
+                    ->state(fn($record) => $record->getMedia('documents')->count()),
             ])
             ->filters([
                 //
@@ -63,7 +71,9 @@ class EmployeeResource extends Resource
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),
+            
             ]);
+            
     }
 
     public static function getRelations(): array
