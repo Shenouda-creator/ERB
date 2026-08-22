@@ -52,7 +52,11 @@ class JournalEntryResource extends Resource
                         ->required()
                         ->searchable()
                         ->preload(),
-
+                    Select::make('cost_center_id')
+                        ->relationship('costCenter', 'name')
+                        ->searchable()
+                        ->preload()
+                        ->label('Cost Center'),
                     TextInput::make('debit')
                         ->numeric()
                         ->default(0)
@@ -65,7 +69,7 @@ class JournalEntryResource extends Resource
                         ->required()
                         ->live(),
                 ])
-                ->columns(3)
+                ->columns(4)
                 ->defaultItems(2)
                 ->live()
                 ->rule(function () {

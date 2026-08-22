@@ -9,8 +9,7 @@ class JournalEntryLine extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['journal_entry_id', 'account_id', 'debit', 'credit'];
-
+    protected $fillable = ['journal_entry_id', 'account_id', 'cost_center_id', 'debit', 'credit'];
     public function journalEntry()
     {
         return $this->belongsTo(JournalEntry::class);
@@ -19,5 +18,9 @@ class JournalEntryLine extends Model
     public function account()
     {
         return $this->belongsTo(Account::class);
+    }
+    public function costCenter()
+    {
+        return $this->belongsTo(CostCenter::class);
     }
 }
