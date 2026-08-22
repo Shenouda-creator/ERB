@@ -27,6 +27,10 @@ class Account extends Model
     {
         return $this->hasMany(Account::class, 'parent_id');
     }
+    public function lines()
+    {
+        return $this->hasMany(JournalEntryLine::class);
+    }
 
     public function getActivitylogOptions(): LogOptions
     {
