@@ -5,8 +5,6 @@ namespace App\Filament\Admin\Resources\JournalEntries;
 use App\Filament\Admin\Resources\JournalEntries\Pages\CreateJournalEntry;
 use App\Filament\Admin\Resources\JournalEntries\Pages\EditJournalEntry;
 use App\Filament\Admin\Resources\JournalEntries\Pages\ListJournalEntries;
-use App\Filament\Admin\Resources\JournalEntries\Schemas\JournalEntryForm;
-use App\Filament\Admin\Resources\JournalEntries\Tables\JournalEntriesTable;
 use App\Models\JournalEntry;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -20,8 +18,6 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Support\Icons\Heroicon;
 use Filament\Actions;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Table;
 
 class JournalEntryResource extends Resource

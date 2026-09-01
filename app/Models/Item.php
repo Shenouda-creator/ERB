@@ -30,4 +30,8 @@ class Item extends Model
             ->logFillable()
             ->logOnlyDirty();
     }
+    public function movements()
+    {
+        return $this->hasMany(StockMovement::class);
+    }
 }
